@@ -1,3 +1,7 @@
+.row {
+  max-width: 100%;
+}
+
 #artists-container {
   margin: 0;
   background-color: #eee;
@@ -56,4 +60,12 @@ footer {
     margin: .3em 0;
     font-size: .75em;
   }
+}
+
+@media only screen and (max-width: 40em) {
+
+  #artists-container {
+    display: none;
+  }
+
 }
