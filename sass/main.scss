@@ -1,10 +1,38 @@
-#artist-dropdown {
+#artists-container {
+  margin: 0;
+  background-color: #eee;
+  overflow: scroll;
+}
+
+.artist {
+  padding: 0.5em 0;
+  border-bottom: 2px solid #ddd;
+
+  i {
+    padding-top: .5rem;
+    font-size: 1.4rem;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+#artist-dropdown-btn {
   background-color: #eee;
   font-size: 1.5rem;
   text-align: center;
 
   i {
     display: block;
+  }
+
+  &:hover {
+    background-color: #bbb;
   }
 }
 
