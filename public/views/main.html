@@ -2,7 +2,6 @@
 
 <div class="row">
   <div class="small-12 medium-4 columns" id="artists-container">
-
     <div class="small-12 columns artist" ng-repeat="song in songs" ng-class="{ playing: song.page_title === current_song.page_title }" ng-click="play(song)">
       <div class="small-2 columns">
         <i class="fa fa-play"></i>
@@ -20,6 +19,7 @@
   </div>
 
   <div class="small-12 medium-8 columns" id="artist-info">
+    <h1>{{ current_song.page_title }}</h1>
     <p>
       <strong>LOVE</strong><br>
       {{ current_song.love }}

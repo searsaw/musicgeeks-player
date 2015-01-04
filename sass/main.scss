@@ -11,6 +11,7 @@
 .artist {
   padding: 0.5em 0;
   border-bottom: 2px solid #ddd;
+  cursor: pointer;
 
   i {
     padding-top: .5rem;
@@ -49,6 +50,10 @@
   padding-top: .5rem;
   color: #818181;
   text-align: center;
+
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 footer {
