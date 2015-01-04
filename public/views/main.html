@@ -20,17 +20,8 @@
 
   <div class="small-12 medium-8 columns" id="artist-info">
     <h1>{{ current_song.page_title }}</h1>
-    <p>
-      <strong>LOVE</strong><br>
-      {{ current_song.love }}
-    </p>
-    <p>
-      <strong>WHO &amp; WHERE</strong><br>
-      {{ current_song.who_where }}
-    </p>
-    <p>
-      <strong>CRED</strong><br>
-      {{ current_song.cred }}
-    </p>
+    <p><strong>LOVE</strong><br><span ng-bind-html="current_song.love | trustAsHtml"></span></p>
+    <p><strong>WHO &amp; WHERE</strong><br><span ng-bind-html="current_song.who_where | trustAsHtml"></span></p>
+    <p><strong>CRED</strong><br><span ng-bind-html="current_song.cred | trustAsHtml"></span></p>
   </div>
 </div>

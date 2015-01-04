@@ -13,6 +13,11 @@ angular.module('MusicgeeksApp', ['ngResource', 'ngRoute'])
       return $sce.trustAsResourceUrl(val);
     };
   })
+  .filter('trustAsHtml', function($sce) {
+    return function(val) {
+      return $sce.trustAsHtml(val);
+    };
+  })
   .factory('Song', function($resource) {
     return $resource('http://musicgeeksapi.alexsears.com/v1/songs', { apikey: 'F7284ACC3C51E' });
   })
