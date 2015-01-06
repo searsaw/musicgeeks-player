@@ -54,5 +54,6 @@ angular.module('MusicgeeksApp', ['ngResource', 'ngRoute'])
 
     $scope.play = function(song) {
       $scope.current_song = song;
+      ga('send', 'event', song.page_title, 'click', 'play song');
     };
   });
