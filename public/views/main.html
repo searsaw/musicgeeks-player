@@ -1,8 +1,8 @@
-<iframe width="100%" height="166" scrolling="no" frameborder="no" ng-src="{{ current_song.soundcloud_url | trustAsResourceUrl }}" id="soundcloud-song"></iframe>
+<iframe width="100%" height="166" scrolling="no" frameborder="no" id="soundcloud-song"></iframe>
 
 <div class="row">
   <div class="small-12 medium-4 columns" id="artists-container">
-    <div class="small-12 columns artist" ng-repeat="song in songs" ng-class="{ playing: song.page_title === current_song.page_title }" ng-click="play(song)">
+    <div class="small-12 columns artist" ng-repeat="song in songs" ng-class="{ playing: song.page_title === current_song.page_title }" ng-click="play(song, true)">
       <div class="small-2 columns">
         <i class="fa fa-play"></i>
       </div>
@@ -13,7 +13,7 @@
 
   </div>
 
-  <div class="small-12 columns show-for-small-only" id="artist-dropdown-btn">
+  <div class="small-12 columns show-for-small-only" id="artist-dropdown-btn" ng-click="toggleArtists()">
     View artists
     <i class="fa fa-angle-double-down"></i>
   </div>
