@@ -47,7 +47,8 @@ angular.module('MusicgeeksApp', ['ngResource', 'ngRoute'])
           // forces angular to see update since soundcould api
           // updates happen outside angular's digest loop
           $scope.$apply(function() {
-            $scope.play($scope.songs[++songIndex], false);
+            songIndex = (songIndex + 1) >= $scope.songs.length ? 0 : songIndex + 1;
+            $scope.play($scope.songs[songIndex], false);
           });
         });
       });
