@@ -1,10 +1,9 @@
 angular.module('MusicgeeksApp')
-  .controller('MusicgeeksController', function($scope, Song) {
+  .controller('MusicgeeksController', ['$scope', 'Song', 'SoundcloudWidget', function($scope, Song, SoundcloudWidget) {
     var artistDropdownBtn = $('#artist-dropdown-btn'),
         artistsContainer = $('#artists-container'),
         iArrow = $('#artist-dropdown-btn i'),
         soundcloudIframe = document.getElementById('soundcloud-song'),
-        soundcloudWidget = {},
         footer = $('footer'),
         songIndex = 0;
 
@@ -19,9 +18,9 @@ angular.module('MusicgeeksApp')
       }
 
       soundcloudIframe.src = "https://w.soundcloud.com/player/?url=" + $scope.current_song.soundcloud_url;
-      soundcloudWidget = SC.Widget(soundcloudIframe);
-      soundcloudWidget.bind(SC.Widget.Events.READY, function() {
-        soundcloudWidget.bind(SC.Widget.Events.FINISH, function() {
+      SoundcloudWidget.createNew(soundcloudIframe);
+      SoundcloudWidget.bind('ready', function() {
+        SoundcloudWidget.bind('finish', function() {
           // forces angular to see update since soundcould api
           // updates happen outside angular's digest loop
           $scope.$apply(function() {
@@ -30,7 +29,7 @@ angular.module('MusicgeeksApp')
           });
         });
 
-        soundcloudWidget.bind(SC.Widget.Events.ERROR, function() {
+        SoundcloudWidget.bind('error', function() {
           // forces angular to see update since soundcould api
           // updates happen outside angular's digest loop
           $scope.$apply(function() {
@@ -57,17 +56,12 @@ angular.module('MusicgeeksApp')
 
     $scope.play = function(song, update_index) {
       $scope.current_song = song;
-      soundcloudWidget.load(song.soundcloud_url, {
-        color: '777',
-        hide_related: false,
-        show_reposts: false,
-        callback: function() {
-          soundcloudWidget.play();
-        }
+      SoundcloudWidget.load(song.soundcloud_url, function() {
+          SoundcloudWidget.play();
       });
 
       ga('send', 'event', song.page_title, 'click', 'play song');
 
       if (update_index) songIndex = $scope.songs.indexOf(song);
     };
-  });
+  }]);
