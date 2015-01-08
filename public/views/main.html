@@ -2,7 +2,9 @@
 
 <div class="row">
   <div class="small-12 medium-4 columns" id="artists-container">
-    <div class="small-12 columns artist" ng-repeat="song in songs" ng-class="{ playing: song.page_title === current_song.page_title }" ng-click="play(song, true)">
+    <input type="search" class="form-control" placeholder='Search artist' ng-model='artistQuery' />
+
+    <div class="small-12 columns artist" ng-repeat="song in songs | filter: artistQuery" ng-class="{ playing: song.page_title === current_song.page_title }" ng-click="play(song, true)">
       <div class="small-2 columns">
         <i class="fa fa-play"></i>
       </div>
