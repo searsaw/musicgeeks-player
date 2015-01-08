@@ -58,10 +58,12 @@ angular.module('MusicgeeksApp')
     $scope.play = function(song, update_index) {
       $scope.current_song = song;
       soundcloudWidget.load(song.soundcloud_url, {
-        auto_play: true,
         color: '777',
         hide_related: false,
-        show_reposts: false
+        show_reposts: false,
+        callback: function() {
+          soundcloudWidget.play();
+        }
       });
 
       ga('send', 'event', song.page_title, 'click', 'play song');
