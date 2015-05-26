@@ -1,6 +1,6 @@
 angular.module('MusicgeeksApp')
   .factory('Song', function($resource) {
-    return $resource('http://musicgeeksapi.alexsears.com/v1/songs', { apikey: 'F7284ACC3C51E' });
+    return $resource('http://musicgeeksapi.alexsears.com/v1/songs', { apikey: '96F32F59E64B1' });
   })
   .factory('SoundcloudWidget', function() {
     var widget;
